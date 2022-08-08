@@ -1,0 +1,25 @@
+const cfn = require('cfn');
+cfn('Capt-Cook02', __dirname + '/template.js')
+    .then(function() {
+        console.log('done');
+    });
+cfn('Capt-Cook02', 'template.json');
+cfn('Capt-Cook02-YAML', 'template.yaml');
+cfn({
+  name: 'Capt-Cook02',
+  template: 'template.yaml',
+  cfParams: {
+    buildNumber: '002',
+  },
+  tags: {
+    app: 'my app',
+    department: 'accounting',
+  },
+  awsConfig: {
+    region: 'us-east-1',
+    accessKeyId: 'AKIAZIJXGOCK277N6LAI',
+    secretAccessKey: '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',
+  },
+  capabilities: ['CAPABILITY_IAM'],
+  checkStackInterval: 5000,
+});
